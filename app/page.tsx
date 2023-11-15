@@ -7,7 +7,10 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Home() {
-  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
+  const user =
+    typeof window !== "undefined"
+      ? JSON.parse(window.localStorage.getItem("trello")!)
+      : undefined;
   const [statusCrateTask] = useBoardStore((state) => [state.statusCrateTask]);
   const notify = (message: string, type: string) => {
     if (type === "error") {

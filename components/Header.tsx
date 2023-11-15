@@ -11,7 +11,10 @@ import { useRouter } from "next/navigation";
 
 function Header() {
   const router = useRouter();
-  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
+  const user =
+    typeof window !== "undefined"
+      ? JSON.parse(window.localStorage.getItem("trello")!)
+      : undefined;
   const logoutUser = userStore((state) => state.logoutUser);
   const [board, searchString, setSearchString] = useBoardStore((state) => [
     state.board,
