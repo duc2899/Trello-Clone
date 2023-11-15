@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 function Header() {
   const router = useRouter();
-  const user = JSON.parse(localStorage.getItem("trello")!);
+  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
   const logoutUser = userStore((state) => state.logoutUser);
   const [board, searchString, setSearchString] = useBoardStore((state) => [
     state.board,

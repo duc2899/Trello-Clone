@@ -9,7 +9,7 @@ import { PhotoIcon } from "@heroicons/react/24/solid";
 import TaskPriorityGroup from "./TaskPriorityGroup";
 import { Bars3BottomRightIcon } from "@heroicons/react/24/solid";
 function Modal() {
-  const user = JSON.parse(localStorage.getItem("trello")!);
+  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
 
   const imagePickerRef = useRef<HTMLInputElement>(null);
   const [closeModal, isOpen] = useModalStore((state) => [

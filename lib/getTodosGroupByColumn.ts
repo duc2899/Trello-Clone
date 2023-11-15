@@ -2,7 +2,7 @@ import { database } from "@/appWrite";
 import { Models, Query } from "appwrite";
 
 export const getTodosGroupByColumn = async () => {
-  const user = JSON.parse(localStorage.getItem("trello")!);
+  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
   const fetchData = await database.listDocuments(
     "6530c974452a29777337",
     "6530c98e46ccbce155e9",

@@ -14,7 +14,7 @@ type Inputs = {
 };
 
 function Register() {
-  const user = JSON.parse(localStorage.getItem("trello")!);
+  const user = window && JSON.parse(window.localStorage.getItem("trello")!);
   const router = useRouter();
   const [error, setError] = React.useState("");
   const [registerUser] = userStore((state) => [state.registerUser]);

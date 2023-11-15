@@ -104,6 +104,6 @@ export const userStore = create<User>()((set) => ({
   },
   logoutUser: () => {
     set({ isLogin: false });
-    localStorage.removeItem("trello");
+    window && window.localStorage.removeItem("trello");
   },
 }));
