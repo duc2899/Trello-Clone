@@ -13,7 +13,7 @@ type Login = {
   Password: string;
 };
 function Login() {
-  const user = JSON.parse(localStorage.getItem("trello")!);
+  const user = JSON.parse(window.localStorage.getItem("trello")!);
   const router = useRouter();
   const [loginUser] = userStore((state) => [state.loginUser]);
   const [loading, setLoading] = React.useState(false);
@@ -41,7 +41,7 @@ function Login() {
       if (result) {
         if (result.statusCode === 200) {
           const infor = await account.get();
-          localStorage.setItem(
+          window.localStorage.setItem(
             "trello",
             JSON.stringify({
               userID: infor.$id,
