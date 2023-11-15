@@ -13,7 +13,8 @@ type Login = {
   Password: string;
 };
 function Login() {
-  const user = JSON.parse(window.localStorage.getItem("trello")!);
+  const user =
+    window !== undefined && JSON.parse(window.localStorage.getItem("trello")!);
   const router = useRouter();
   const [loginUser] = userStore((state) => [state.loginUser]);
   const [loading, setLoading] = React.useState(false);
@@ -41,13 +42,14 @@ function Login() {
       if (result) {
         if (result.statusCode === 200) {
           const infor = await account.get();
-          window.localStorage.setItem(
-            "trello",
-            JSON.stringify({
-              userID: infor.$id,
-              name: infor.name,
-            })
-          );
+          window !== undefined &&
+            window.localStorage.setItem(
+              "trello",
+              JSON.stringify({
+                userID: infor.$id,
+                name: infor.name,
+              })
+            );
           notify("Login success", "success");
           return router.push("/");
         } else {
